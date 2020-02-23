@@ -3,8 +3,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Rapport } from '../models/rapport';
 import { getCurrentUser, updateSolde } from '../handlers/userSession';
 import { User } from '../models/user';
-import { UserService } from '../user.service';
 import { RapportService } from '../rapport.service';
+import { UserService } from '../user.service';
 
 
 

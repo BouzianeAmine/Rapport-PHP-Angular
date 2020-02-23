@@ -2,17 +2,18 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { User } from './models/user';
 import { toString, soldeBehavior, stockSession, testSameConnectionDay, toJSON, getCurrentUser, stockHist } from './handlers/userSession';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  constructor() {  }
 
   connect(userCred): Observable<User> {
     return Observable.create(observer => {
-      fetch("http://localhost:8000/bootstrap.php/connect", { method: 'POST', mode: 'cors', body: toString(userCred) })
+      fetch(`${environment.server}:${environment.port}/bootstrap.php/connect`, { method: 'POST', mode: 'cors', body: toString(userCred) })
         .then(value => value.json())
         .then((user) => {
           localStorage.setItem('auth', 'true');
@@ -36,7 +37,7 @@ export class UserService {
 
   update(user: User): Promise<any> {
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:8000/bootstrap.php/updateUser", { method: 'POST', mode: 'cors', body: toString(user) })
+      fetch(`${environment.server}:${environment.port}/bootstrap.php/updateUser`, { method: 'POST', mode: 'cors', body: toString(user) })
         .then(res => res.json()).then((user: User) => {
           stockSession(user);
           resolve(user);
@@ -46,7 +47,7 @@ export class UserService {
 
   signUp(user: User) {
     return new Promise((resolve, reject) => {
-      fetch("http://localhost:8000/bootstrap.php/signup", { method: 'POST', mode: 'cors', body: toString(user) })
+      fetch(`${environment.server}:${environment.port}/bootstrap.php/signup`, { method: 'POST', mode: 'cors', body: toString(user) })
         .then(res => res.json()).then(user => resolve(user)).catch(err => reject(err));
     })
   }
