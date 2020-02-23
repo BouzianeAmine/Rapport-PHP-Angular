@@ -1,0 +1,46 @@
+.cards {
+  /* padding: 10px; */
+  /* display: -webkit-box; */
+  display: grid;
+  /* left: 10PX; */
+  /* -webkit-box-pack: justify; */
+  /* justify-content: space-between; */
+  text-align: center;
+  /* margin-right: auto; */
+  grid-template-columns: repeat(3,1fr);
+}
+.example-card {
+  max-width: 400px;
+  margin-right: 20px;
+}
+
+.example-header-image {
+  background-image: url(../../assets/rapport-icône.jpg);
+  background-size: cover;
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+button {
+  padding-top: 2px;
+}
+
+.mat-stepper-vertical {
+  margin-top: 8px;
+}
+
+.mat-form-field {
+  margin-top: 16px;
+}
+
+form {
+  display: grid;
+}
