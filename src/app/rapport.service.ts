@@ -13,7 +13,7 @@ export class RapportService {
 
   getRapports(): Observable<Array<Rapport>> {
     return Observable.create(observer => {
-      fetch(`${environment.server}:${environment.port}/bootstrap.php/rapports`, { method: 'GET', mode: 'cors' })
+      fetch(`${environment.server}/bootstrap.php/rapports`, { method: 'GET', mode: 'cors' })
         .then(res => res.json())
         .then((rapports: Array<Rapport>) => {
           observer.next(rapports);
@@ -25,7 +25,7 @@ export class RapportService {
   getRapportsUser(user): Observable<Array<Rapport>> {
 
     return Observable.create(observer => {
-      fetch(`${environment.server}:${environment.port}/bootstrap.php/rapport`, { 
+      fetch(`${environment.server}/bootstrap.php/rapport`, { 
         method: 'POST', mode: 'cors', body: toString(user)
        })
         .then(res => res.json())
@@ -38,7 +38,7 @@ export class RapportService {
 
   addRapport(data) : boolean{
     var resu:boolean=null;
-    fetch(`${environment.server}:${environment.port}/uploader.php`, { method: 'POST', mode: 'cors', body: data })
+    fetch(`${environment.server}/uploader.php`, { method: 'POST', mode: 'cors', body: data })
     .then(res => {
       if (res.ok) {
        resu=true;

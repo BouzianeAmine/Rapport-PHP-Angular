@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "places-cfdd2": {
+      "hosting": {
+        "frontStack": [
+          "places-cfdd2"
+        ]
+      }
+    }
+  }
+}

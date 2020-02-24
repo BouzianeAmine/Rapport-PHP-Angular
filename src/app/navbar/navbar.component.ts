@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { getCurrentUser, toJSON, toString } from '../handlers/userSession';
 import { User } from '../models/user';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-navbar',
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
     return toJSON(localStorage.getItem('auth'));
   }
   logout() {
-    fetch('http://localhost:8000/bootstrap.php/deconnect', { method: 'POST', mode: 'cors', body: toString(this.currentUser) })
+    fetch(`${environment.server}/bootstrap.php/deconnect`, { method: 'POST', mode: 'cors', body: toString(this.currentUser) })
       .then(res => {
         if (res.ok) {
           localStorage.setItem('user', null);
